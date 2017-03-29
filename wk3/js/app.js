@@ -13,11 +13,8 @@ $(function(){
 });
 
 // Conversion function
-
 function dollarsTo(amount, currency){
-
   var convertedValue = "";
-
   switch(currency){
     case "British Pound":
     convertedValue = amount * 0.8;
@@ -29,6 +26,10 @@ function dollarsTo(amount, currency){
     convertedValue = amount * 6.88;
     break;
   }
+  // Test to see if converted value is int, if not round to two decimal places.
+  convertedValue = (Number.isInteger(convertedValue) === true) ? (convertedValue) : convertedValue.toFixed(2);
+
+  // Append converted value to list
   $('#convertedList').append('<li class="list-group-item">' + amount + ' US Dollars equals ' + convertedValue + ' ' + currency + '</li>');
   console.log(convertedValue);
 }

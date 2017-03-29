@@ -71,6 +71,11 @@
         convertedValue = amount * response.rates.CNY;
         break;
       }
+
+      // Test to see if converted value is int, if not round to two decimal places.
+      convertedValue = (Number.isInteger(convertedValue) === true) ? (convertedValue) : convertedValue.toFixed(2);
+
+      // Append converted value to list
       $('#convertedList').append('<li class="list-group-item">' + amount + ' US Dollars equals ' + convertedValue + ' ' + currency + '</li>');
       console.log(convertedValue);
     }
